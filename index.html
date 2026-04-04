@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maheby — Android Developer & Entrepreneur</title>
+  <meta name="description" content="Maheby — Android Developer, Entrepreneur & Founder of The Exceptional Technology. Building apps, SaaS, and digital products from Bangladesh."/>
+  <meta property="og:title" content="Maheby — Android Developer & Entrepreneur"/>
+  <meta property="og:description" content="Founder of The Exceptional Technology. Android, Web, SaaS builder from Jessore, Bangladesh."/>
+  <meta property="og:image" content="Profile_Pic.jpg"/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    [data-theme="dark"]{--bg:#07070d;--surface:#0f0f1a;--surface2:#131325;--border:#1e1e32;--accent:#e8ff47;--accent2:#7b6cff;--text:#e8e8f0;--text2:#9090b0;--muted:#6b6b8a;--glow:rgba(232,255,71,0.10);--glow2:rgba(123,108,255,0.08);--nav-bg:rgba(7,7,13,0.88);--shadow:0 4px 30px rgba(0,0,0,0.5);--pb:rgba(232,255,71,0.25);--pg:rgba(232,255,71,0.10);--tb:#1e1e32}
+    [data-theme="light"]{--bg:#f4f4f0;--surface:#ffffff;--surface2:#ebebeb;--border:#d4d4cc;--accent:#1a1a2e;--accent2:#5046e4;--text:#111118;--text2:#55555f;--muted:#888890;--glow:rgba(80,70,228,0.06);--glow2:rgba(26,26,46,0.04);--nav-bg:rgba(244,244,240,0.92);--shadow:0 4px 20px rgba(0,0,0,0.08);--pb:rgba(80,70,228,0.30);--pg:rgba(80,70,228,0.08);--tb:#e0e0d8}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;cursor:none;transition:background 0.4s,color 0.4s}
+    #cursor{width:10px;height:10px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transition:transform 0.15s;mix-blend-mode:difference}
+    #cursor-ring{width:36px;height:36px;border:1.5px solid var(--pb);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:all 0.25s cubic-bezier(0.23,1,0.32,1)}
+    [data-theme="dark"] body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4}
+    .orb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;transition:background 0.4s}
+    .orb-1{width:600px;height:600px;background:var(--glow);top:-200px;right:-100px}
+    .orb-2{width:500px;height:500px;background:var(--glow2);bottom:-100px;left:-150px}
+    #theme-toggle{background:var(--tb);border:1px solid var(--border);border-radius:50px;padding:0.4rem 0.9rem;cursor:pointer;display:flex;align-items:center;gap:0.4rem;color:var(--text);font-family:'Fira Code',monospace;font-size:0.72rem;letter-spacing:0.04em;white-space:nowrap;transition:all 0.3s}
+    #theme-toggle:hover{border-color:var(--accent2)}
+    nav{position:fixed;top:0;width:100%;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;border-bottom:1px solid transparent;transition:all 0.4s}
+    nav.scrolled{background:var(--nav-bg);border-bottom-color:var(--border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+    .nav-logo{font-family:'Orbitron',sans-serif;font-weight:800;font-size:1rem;color:var(--accent);letter-spacing:0.05em;text-decoration:none}
+    [data-theme="light"] .nav-logo{color:var(--accent2)}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;font-family:'Fira Code',monospace}
+    .nav-links a:hover{color:var(--accent2)}
+    .nav-right{display:flex;align-items:center;gap:1rem}
+    .nav-cta{background:var(--accent);color:var(--bg);padding:0.48rem 1.1rem;border-radius:4px;font-size:0.75rem;font-weight:700;text-decoration:none;letter-spacing:0.05em;font-family:'Orbitron',sans-serif;transition:opacity 0.2s,transform 0.2s}
+    [data-theme="light"] .nav-cta{color:#fff;background:var(--accent2)}
+    .nav-cta:hover{opacity:0.85;transform:translateY(-1px)}
+    section{position:relative;z-index:1}
+    .section-inner{max-width:1200px;margin:0 auto;padding:7rem 4rem}
+    #hero .section-inner{min-height:100vh;display:grid;grid-template-columns:1fr auto;align-items:center;gap:4rem;padding-top:9rem;padding-bottom:5rem}
+    .hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:var(--glow);border:1px solid var(--pb);padding:0.35rem 0.9rem;border-radius:100px;font-family:'Fira Code',monospace;font-size:0.75rem;color:var(--accent2);margin-bottom:1.8rem;animation:fadeUp 0.8s ease both}
+    .hero-tag::before{content:'';width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+    .hero-name{font-family:'Orbitron',sans-serif;font-size:clamp(2.4rem,6vw,6rem);font-weight:900;line-height:1;letter-spacing:0.04em;animation:fadeUp 0.8s 0.1s ease both}
+    .hero-name .ac{color:var(--accent)}
+    [data-theme="light"] .hero-name .ac{color:var(--accent2)}
+    .hero-role{font-family:'Fira Code',monospace;font-size:clamp(0.82rem,1.5vw,1.02rem);color:var(--muted);margin-top:1.2rem;animation:fadeUp 0.8s 0.2s ease both}
+    .hero-role .em{color:var(--accent2)}
+    .hero-desc{max-width:520px;font-size:1rem;color:var(--text2);margin-top:1.3rem;line-height:1.85;animation:fadeUp 0.8s 0.3s ease both}
+    .hero-actions{display:flex;gap:1rem;margin-top:2.2rem;flex-wrap:wrap;animation:fadeUp 0.8s 0.4s ease both}
+    .btn-primary{background:var(--accent);color:var(--bg);padding:0.82rem 1.8rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-weight:700;font-size:0.78rem;text-decoration:none;letter-spacing:0.05em;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 0 28px var(--pg)}
+    [data-theme="light"] .btn-primary{background:var(--accent2);color:#fff}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 45px var(--pb)}
+    .btn-ghost{border:1px solid var(--border);color:var(--text);padding:0.82rem 1.8rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-weight:600;font-size:0.78rem;text-decoration:none;letter-spacing:0.04em;transition:border-color 0.2s,color 0.2s}
+    .btn-ghost:hover{border-color:var(--accent2);color:var(--accent2)}
+    .hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;flex-wrap:wrap;animation:fadeUp 0.8s 0.5s ease both}
+    .stat-num{font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);display:block}
+    [data-theme="light"] .stat-num{color:var(--accent2)}
+    .stat-label{font-size:0.7rem;color:var(--muted);font-family:'Fira Code',monospace;letter-spacing:0.05em}
+
+    /* PHOTO */
+    .hero-photo-wrap{animation:fadeUp 0.8s 0.2s ease both;flex-shrink:0}
+    .photo-frame{position:relative;width:290px;height:330px;background:var(--surface2);border-radius:16px;overflow:hidden}
+    .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:16px;display:block;filter:grayscale(15%) contrast(1.05);transition:filter 0.4s;position:relative;z-index:3}
+    [data-theme="light"] .photo-frame img{filter:grayscale(5%) contrast(1.02)}
+    .photo-frame img:hover{filter:grayscale(0%) contrast(1.1)}
+    [data-theme="dark"] .photo-frame::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,255,71,0.07) 0%,rgba(123,108,255,0.09) 100%);border-radius:16px;z-index:2;pointer-events:none}
+    .photo-frame::after{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(135deg,var(--pb),transparent 60%,var(--accent2));opacity:0.5;z-index:1}
+    .photo-corner{position:absolute;width:20px;height:20px;z-index:4}
+    .photo-corner.tl{top:-6px;left:-6px;border-top:2px solid var(--accent);border-left:2px solid var(--accent)}
+    .photo-corner.br{bottom:-6px;right:-6px;border-bottom:2px solid var(--accent);border-right:2px solid var(--accent)}
+    [data-theme="light"] .photo-corner{border-color:var(--accent2)!important}
+    .photo-badge{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);padding:0.4rem 1rem;border-radius:50px;font-family:'Fira Code',monospace;font-size:0.7rem;color:var(--text);white-space:nowrap;z-index:5;box-shadow:var(--shadow)}
+    .photo-status{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);padding:0.28rem 0.6rem;border-radius:4px;font-family:'Fira Code',monospace;font-size:0.63rem;color:#399906;z-index:5;display:flex;align-items:center;gap:0.4rem;backdrop-filter:blur(8px)}
+    .photo-status::before{content:'';width:5px;height:5px;background:#dac109;border-radius:50%;animation:pulse 2s infinite}
+    [data-theme="light"] .photo-status{background:rgba(255, 255, 255, 0.85);border-color:rgba(0,0,0,0.08)}
+
+    /* STORES */
+    .stores-strip{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 4rem;display:flex;align-items:center;gap:2rem;position:relative;z-index:1;overflow-x:auto}
+    .stores-label{font-family:'Fira Code',monospace;font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0}
+    .stores-list{display:flex;gap:0.8rem;flex-shrink:0}
+    .store-tag{font-family:'Fira Code',monospace;font-size:0.72rem;color:var(--text);background:var(--surface2);border:1px solid var(--border);padding:0.3rem 0.8rem;border-radius:4px;white-space:nowrap;transition:border-color 0.2s}
+    .store-tag:hover{border-color:var(--accent2)}
+
+    /* SECTION */
+    .section-label{font-family:'Fira Code',monospace;font-size:0.7rem;color:var(--accent2);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.8rem;display:block}
+    .section-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,3.2vw,2.4rem);font-weight:700;letter-spacing:0.02em;margin-bottom:0.5rem}
+    .section-sub{color:var(--text2);max-width:480px;margin-bottom:3rem;font-size:0.93rem}
+    .line-divider{border:none;border-top:1px solid var(--border);max-width:1200px;margin:0 auto}
+
+    /* SKILLS */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .skill-card{background:var(--surface);padding:1.5rem;transition:background 0.25s;position:relative;overflow:hidden}
+    .skill-card:hover{background:var(--surface2)}
+    .skill-icon{font-size:1.4rem;margin-bottom:0.8rem}
+    .skill-name{font-family:'Orbitron',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.03em;margin-bottom:0.4rem}
+    .skill-desc{color:var(--text2);font-size:0.82rem;margin-bottom:0.7rem}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:0.3rem}
+    .skill-tag{font-family:'Fira Code',monospace;font-size:0.64rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:0.15rem 0.5rem;border-radius:3px}
+
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
+    .project-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.7rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s}
+    .project-card:hover{border-color:var(--pb);transform:translateY(-4px);box-shadow:var(--shadow)}
+    .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));opacity:0;transition:opacity 0.3s}
+    .project-card:hover::before{opacity:1}
+    .project-badge{display:inline-block;font-family:'Fira Code',monospace;font-size:0.63rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:3px;margin-bottom:1rem}
+    .badge-live{background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2)}
+    .badge-build{background:rgba(123,108,255,0.1);color:var(--accent2);border:1px solid rgba(123,108,255,0.2)}
+    .badge-launch{background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.2)}
+    .project-title{font-family:'Orbitron',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.02em;margin-bottom:0.6rem}
+    .project-desc{color:var(--text2);font-size:0.86rem;line-height:1.75}
+    .project-tech{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:1rem}
+    .tech-pill{font-family:'Fira Code',monospace;font-size:0.63rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:0.15rem 0.5rem;border-radius:100px}
+    .project-impact{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-family:'Fira Code',monospace;font-size:0.72rem;color:var(--accent2)}
+
+    /* SERVICES */
+    .offer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem}
+    .offer-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:border-color 0.25s,transform 0.25s}
+    .offer-card:hover{border-color:var(--accent2);transform:translateY(-3px)}
+    .offer-icon{font-size:1.4rem;margin-bottom:0.7rem}
+    .offer-title{font-family:'Orbitron',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.02em;margin-bottom:0.4rem}
+    .offer-desc{color:var(--text2);font-size:0.82rem}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+    .about-text p{color:var(--text2);margin-bottom:1rem;line-height:1.85;font-size:0.93rem}
+    .about-highlights{display:flex;flex-direction:column;gap:0.75rem}
+    .highlight-row{display:flex;align-items:center;gap:1rem;padding:0.82rem 1.1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;transition:border-color 0.2s,transform 0.2s}
+    .highlight-row:hover{border-color:var(--accent2);transform:translateX(4px)}
+    .highlight-dot{width:7px;height:7px;background:var(--accent2);border-radius:50%;flex-shrink:0}
+    .highlight-text{font-size:0.87rem;color:var(--text)}
+
+    /* CONTACT */
+    #contact .section-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .contact-links{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2.5rem}
+    .contact-link{display:flex;align-items:center;gap:0.6rem;background:var(--surface);border:1px solid var(--border);padding:0.78rem 1.3rem;border-radius:8px;text-decoration:none;color:var(--text);font-size:0.8rem;font-family:'Fira Code',monospace;transition:border-color 0.2s,color 0.2s,transform 0.2s}
+    .contact-link:hover{border-color:var(--accent2);color:var(--accent2);transform:translateY(-2px)}
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;color:var(--muted);font-family:'Fira Code',monospace;font-size:0.7rem}
+    footer a{color:var(--muted);text-decoration:none;transition:color 0.2s}
+    footer a:hover{color:var(--accent2)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .hamburger{display:none;cursor:pointer;background:none;border:none;color:var(--text);font-size:1.4rem;padding:0.3rem}
+    @media(max-width:900px){#hero .section-inner{grid-template-columns:1fr;padding-top:7rem}.hero-photo-wrap{display:flex;justify-content:center;order:-1}.photo-frame{width:220px;height:250px}.hero-name{font-size:clamp(2rem,8vw,3.5rem)}}
+    @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.hamburger{display:block}.nav-cta{display:none}.section-inner{padding:4.5rem 1.5rem}.about-grid{grid-template-columns:1fr;gap:2rem}.stores-strip{padding:1rem 1.5rem}footer{padding:1.5rem;flex-direction:column;text-align:center}body{cursor:auto}#cursor,#cursor-ring{display:none}}
+  </style>
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <nav id="navbar">
+    <a class="nav-logo" href="#hero">MAHEBY.</a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span id="theme-icon">☀️</span><span id="theme-label">Light</span>
+      </button>
+      <a class="nav-cta" href="#contact">Hire Me →</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="section-inner">
+      <div class="hero-left">
+        <div class="hero-tag">Available for Projects &amp; Collaboration</div>
+        <h1 class="hero-name">MAHEBY<span class="ac">.</span></h1>
+        <p class="hero-role">Android Dev · <span class="em">Entrepreneur</span> · SaaS Builder</p>
+        <p class="hero-desc">Founder of <strong>The Exceptional Technology</strong> — building Android apps, web platforms &amp; digital products from <strong>Jessore, Bangladesh</strong>. Published on 6 app stores. Turning ideas into scalable products.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#projects">View Projects</a>
+          <a class="btn-ghost" href="#contact">Get In Touch</a>
+        </div>
+        <div class="hero-stats">
+          <div><span class="stat-num" data-target="6">6</span><span class="stat-label">App Stores</span></div>
+          <div><span class="stat-num" data-target="4">4</span><span class="stat-label">Live Projects</span></div>
+          <div><span class="stat-num" data-target="5">5</span><span class="stat-label">BD Partners</span></div>
+          <div><span class="stat-num">∞</span><span class="stat-label">Building Mode</span></div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="photo-frame">
+          <div class="photo-corner tl"></div>
+          <div class="photo-corner br"></div>
+          <div class="photo-status">Open to Work</div>
+          <img src="Profile_Pic.jpg" alt="Maheby — Android Developer &amp; Entrepreneur" loading="eager"/>
+          <div class="photo-badge">📍 Jessore, Bangladesh</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stores-strip">
+    <span class="stores-label">Published on →</span>
+    <div class="stores-list">
+      <span class="store-tag">🟢 Google Play</span>
+      <span class="store-tag">🔵 Samsung Galaxy Store</span>
+      <span class="store-tag">🔴 Huawei AppGallery</span>
+      <span class="store-tag">🟠 OPPO Store</span>
+      <span class="store-tag">🟣 Vivo App Market</span>
+      <span class="store-tag">⚪ Realme Store</span>
+    </div>
+  </div>
+
+  <section id="skills">
+    <div class="section-inner">
+      <span class="section-label reveal">// Technical Arsenal</span>
+      <h2 class="section-title reveal">What I Build With</h2>
+      <p class="section-sub reveal">Cross-platform expertise spanning mobile, web, and backend systems.</p>
+      <div class="skills-grid reveal">
+        <div class="skill-card"><div class="skill-icon">📱</div><div class="skill-name">Android Development</div><p class="skill-desc">Native Android apps with clean architecture and production quality.</p><div class="skill-tags"><span class="skill-tag">Java</span><span class="skill-tag">MVVM</span><span class="skill-tag">AdMob</span><span class="skill-tag">Retrofit</span></div></div>
+        <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">Web Development</div><p class="skill-desc">Full-stack web apps and eCommerce with local payment gateways.</p><div class="skill-tags"><span class="skill-tag">Laravel</span><span class="skill-tag">Tailwind</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">SSLCommerz</span></div></div>
+        <div class="skill-card"><div class="skill-icon">🛒</div><div class="skill-name">WordPress / WooCommerce</div><p class="skill-desc">Custom plugins and optimized eCommerce solutions.</p><div class="skill-tags"><span class="skill-tag">Plugin Dev</span><span class="skill-tag">WooCommerce</span><span class="skill-tag">PHP</span></div></div>
+        <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-name">Python</div><p class="skill-desc">Desktop applications and API backend development.</p><div class="skill-tags"><span class="skill-tag">CustomTkinter</span><span class="skill-tag">FastAPI</span><span class="skill-tag">pystray</span></div></div>
+        <div class="skill-card"><div class="skill-icon">💳</div><div class="skill-name">BD Payment Integration</div><p class="skill-desc">Local payment gateways tailored for the Bangladeshi market.</p><div class="skill-tags"><span class="skill-tag">bKash</span><span class="skill-tag">Nagad</span><span class="skill-tag">SSLCommerz</span></div></div>
+        <div class="skill-card"><div class="skill-icon">📲</div><div class="skill-name">Flutter</div><p class="skill-desc">Expanding into cross-platform mobile development.</p><div class="skill-tags"><span class="skill-tag">60h Course</span><span class="skill-tag">In Progress</span><span class="skill-tag">Dart</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="line-divider"/>
+
+  <section id="projects">
+    <div class="section-inner">
+      <span class="section-label reveal">// Featured Work</span>
+      <h2 class="section-title reveal">Projects That Ship</h2>
+      <p class="section-sub reveal">Real products solving real problems — built, launched, and growing.</p>
+      <div class="projects-grid">
+        <div class="project-card reveal"><span class="project-badge badge-build">🚧 In Development</span><h3 class="project-title">BanglaTube</h3><p class="project-desc">VidIQ-style browser extension for Bengali YouTube creators. Analytics, keyword insights, and growth tools — built for the Bangladeshi creator economy.</p><div class="project-tech"><span class="tech-pill">Chrome Extension</span><span class="tech-pill">Firefox</span><span class="tech-pill">FastAPI</span><span class="tech-pill">bKash</span><span class="tech-pill">Nagad</span></div><div class="project-impact">→ Targeting BD creator market with local payment support</div></div>
+        <div class="project-card reveal"><span class="project-badge badge-launch">⚡ Near Release</span><h3 class="project-title">LicenseFlow</h3><p class="project-desc">WooCommerce digital license manager plugin. 13+ development phases completed. Targeting CodeCanyon marketplace for international revenue.</p><div class="project-tech"><span class="tech-pill">WordPress</span><span class="tech-pill">WooCommerce</span><span class="tech-pill">PHP</span><span class="tech-pill">CodeCanyon</span></div><div class="project-impact">→ 13+ phases complete — CodeCanyon launch imminent</div></div>
+        <div class="project-card reveal"><span class="project-badge badge-live">🟢 Active</span><h3 class="project-title">Bazario</h3><p class="project-desc">Distributed eCommerce platform for Bangladesh with 5 regional partners. Full supply chain and digital operations management.</p><div class="project-tech"><span class="tech-pill">eCommerce</span><span class="tech-pill">Laravel</span><span class="tech-pill">Regional Ops</span><span class="tech-pill">Supply Chain</span></div><div class="project-impact">→ CEO &amp; Digital Manager · 5 regional partners</div></div>
+        <div class="project-card reveal"><span class="project-badge badge-build">🔧 Building</span><h3 class="project-title">Custom Laravel Store</h3><p class="project-desc">Replacing WordPress with a fully custom Laravel 11 platform for selling eBooks, software licenses, and prompt packs with BD payment gateway.</p><div class="project-tech"><span class="tech-pill">Laravel 11</span><span class="tech-pill">Tailwind CSS</span><span class="tech-pill">SSLCommerz</span><span class="tech-pill">Digital Products</span></div><div class="project-impact">→ Full ownership · Zero WP overhead</div></div>
+        <div class="project-card reveal"><span class="project-badge badge-live">🟢 Live</span><h3 class="project-title">The Exceptional Technology</h3><p class="project-desc">Agency website with glassmorphism dark theme. Integrated SSLCommerz, bKash &amp; Nagad for seamless client payment experience.</p><div class="project-tech"><span class="tech-pill">HTML/CSS</span><span class="tech-pill">Glassmorphism</span><span class="tech-pill">SSLCommerz</span><span class="tech-pill">bKash/Nagad</span></div><div class="project-impact">→ benapoleitpark.com · Live &amp; accepting payments</div></div>
+        <div class="project-card reveal" style="border-style:dashed;display:flex;align-items:center;justify-content:center;min-height:180px;"><div style="text-align:center"><div style="font-size:2rem;margin-bottom:0.6rem">🚀</div><p style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:0.82rem;margin-bottom:0.3rem">More Coming Soon</p><p style="color:var(--muted);font-size:0.8rem">Always building something new</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="line-divider"/>
+
+  <section id="services">
+    <div class="section-inner">
+      <span class="section-label reveal">// What I Offer</span>
+      <h2 class="section-title reveal">How I Can Help You</h2>
+      <p class="section-sub reveal">End-to-end solutions for clients and businesses — local and international.</p>
+      <div class="offer-grid">
+        <div class="offer-card reveal"><div class="offer-icon">📱</div><div class="offer-title">Android App Development</div><div class="offer-desc">Native Java apps with MVVM, AdMob monetization, and multi-store publishing across 6 platforms.</div></div>
+        <div class="offer-card reveal"><div class="offer-icon">🌐</div><div class="offer-title">Web &amp; eCommerce Solutions</div><div class="offer-desc">Laravel, WordPress, WooCommerce with local BD payment gateways — built for Bangladesh and beyond.</div></div>
+        <div class="offer-card reveal"><div class="offer-icon">🔌</div><div class="offer-title">Plugin &amp; Extension Dev</div><div class="offer-desc">Custom WordPress plugins, WooCommerce extensions, and browser extensions for Chrome and Firefox.</div></div>
+        <div class="offer-card reveal"><div class="offer-icon">📦</div><div class="offer-title">Digital Product Strategy</div><div class="offer-desc">End-to-end setup for selling eBooks, software licenses, and SaaS — including marketplace strategy.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="line-divider"/>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <span class="section-label">// About Maheby</span>
+          <h2 class="section-title" style="margin-bottom:1.4rem">Builder.<br/>Thinker.<br/>Entrepreneur.</h2>
+          <p>Based in Jessore, Bangladesh — I build software that creates real economic value. From Android apps published across 6 stores to distributed eCommerce platforms with regional partners, I operate at the intersection of technology and business.</p>
+          <p>As founder of <strong>The Exceptional Technology</strong>, I believe in ownership — owning your stack, your products, and your revenue. Every line of code I write serves a business purpose.</p>
+          <p>Beyond code, I'm drawn to Islamic literature, self-help, business books, and financial literacy. I host guests, explore local travel, and document traditional skills.</p>
+          <div style="margin-top:1.5rem"><a class="btn-primary" href="#contact">Work With Me →</a></div>
+        </div>
+        <div class="about-highlights reveal">
+          <div class="highlight-row"><div class="highlight-dot"></div><div class="highlight-text">🏢 Founder — The Exceptional Technology</div></div>
+          <div class="highlight-row"><div class="highlight-dot"></div><div class="highlight-text">📍 Jessore, Bangladesh 🇧🇩</div></div>
+          <div class="highlight-row"><div class="highlight-dot"></div><div class="highlight-text">📱 6 App Stores · Android Dev (Java/MVVM)</div></div>
+          <div class="highlight-row"><div class="highlight-dot"></div><div class="highlight-text">🌐 theexceptional.xyz · benapoleitpark.com</div></div>
+          <div class="highlight-row"><div class="highlight-dot"></div><div class="highlight-text">💡 CEO of Bazario — 5 Regional Partners</div></div>
+          <div class="highlight-row"><div class="highlight-dot"></div><div class="highlight-text">📚 Books · Photography · Financial Literacy</div></div>
+          <div class="highlight-row"><div class="highlight-dot"></div><div class="highlight-text">🎯 Currently mastering Flutter (60h+ course)</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="line-divider"/>
+
+  <section id="contact">
+    <div class="section-inner">
+      <span class="section-label reveal">// Let's Connect</span>
+      <h2 class="section-title reveal" style="font-size:clamp(1.8rem,4.5vw,3.2rem)">Ready to Build<br/>Something Great?</h2>
+      <p style="color:var(--text2);margin-top:1rem;max-width:440px" class="reveal">Open to freelance projects, collaborations, and partnership opportunities. Let's talk about your idea.</p>
+      <div class="contact-links reveal">
+        <a class="contact-link" href="mailto:hello@theexceptional.xyz"><span>✉</span> hello@theexceptional.xyz</a>
+        <a class="contact-link" href="https://theexceptional.xyz" target="_blank" rel="noopener"><span>🌐</span> theexceptional.xyz</a>
+        <a class="contact-link" href="https://benapoleitpark.com" target="_blank" rel="noopener"><span>🏢</span> benapoleitpark.com</a>
+        <a class="contact-link" href="https://github.com/" target="_blank" rel="noopener"><span>⌥</span> GitHub</a>
+        <a class="contact-link" href="https://www.upwork.com/" target="_blank" rel="noopener"><span>💼</span> Upwork</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 Maheby · The Exceptional Technology</span>
+    <span>Built with precision · Jessore, Bangladesh 🇧🇩</span>
+    <a href="https://theexceptional.xyz">theexceptional.xyz</a>
+  </footer>
+
+  <script>
+    const html=document.documentElement;
+    const icon=document.getElementById('theme-icon');
+    const lbl=document.getElementById('theme-label');
+    let dark=true;
+    function toggleTheme(){
+      dark=!dark;
+      html.setAttribute('data-theme',dark?'dark':'light');
+      icon.textContent=dark?'☀️':'🌙';
+      lbl.textContent=dark?'Light':'Dark';
+      document.getElementById('cursor-ring').style.borderColor=dark?'rgba(232,255,71,0.5)':'rgba(80,70,228,0.4)';
+    }
+    const cursor=document.getElementById('cursor');
+    const ring=document.getElementById('cursor-ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx-5+'px';cursor.style.top=my-5+'px'});
+    (function ar(){rx+=(mx-rx-18)*0.12;ry+=(my-ry-18)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ar)})();
+    document.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2.5)';ring.style.transform='scale(1.4)'});
+      el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.transform='scale(1)'});
+    });
+    window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50));
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const els=e.target.parentElement.querySelectorAll('.reveal');
+          els.forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),i*75));
+          obs.unobserve(e.target);
+        }
+      });
+    },{threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    document.querySelectorAll('.stat-num[data-target]').forEach(el=>{
+      const t=parseInt(el.dataset.target);let started=false;
+      const o=new IntersectionObserver(en=>{if(en[0].isIntersecting&&!started){started=true;let c=0;const s=Math.ceil(t/40);const ti=setInterval(()=>{c=Math.min(c+s,t);el.textContent=c;if(c>=t)clearInterval(ti)},40)}});
+      o.observe(el);
+    });
+    function toggleMenu(){
+      const nav=document.getElementById('nav-menu');
+      const open=nav.style.display==='flex';
+      if(open){nav.style.display=''}
+      else{Object.assign(nav.style,{display:'flex',flexDirection:'column',position:'fixed',top:'60px',left:'0',right:'0',background:dark?'rgba(7,7,13,0.97)':'rgba(244,244,240,0.97)',padding:'2rem',backdropFilter:'blur(20px)',borderBottom:'1px solid var(--border)',gap:'1.5rem',zIndex:'99'})}
+    }
+  </script>
+</body>
+</html>
